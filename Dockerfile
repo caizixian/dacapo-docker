@@ -21,3 +21,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends nodejs \
 
 # necessary for fop which generates utf-8 java source code
 ENV LANG=C.UTF-8
+# Allow npm cache to be written when running the container as non-root
+RUN mkdir -p /home && chmod 777 /home
+ENV HOME=/home
